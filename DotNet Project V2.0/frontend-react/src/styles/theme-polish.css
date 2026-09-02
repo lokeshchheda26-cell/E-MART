@@ -1,0 +1,21 @@
+/* =========================================================================
+   DEPRECATED - THIS FILE IS INTENTIONALLY EMPTY AND NO LONGER IMPORTED.
+   -------------------------------------------------------------------------
+   This was a ~28KB "visual polish" layer whose only mechanism was cascade
+   order: it was imported last so that its rules would override the base
+   stylesheets without needing !important. That works, but it meant a single
+   component's appearance was split across three files, and changing a
+   colour required hunting through all of them to find which one actually
+   won.
+
+   Everything it did is now expressed properly:
+     - colours, radii, shadows, spacing  -> src/styles/tokens.css
+     - buttons, cards, fields, badges    -> src/styles/components.css
+     - header, nav, footer, page shells  -> src/styles/layout.css
+     - homepage bands                    -> src/styles/home.css
+     - dark mode                         -> src/styles/theme.css
+
+   The file is left in place (rather than deleted outright) only so that any
+   stale editor tab or local branch still resolves its import. It is safe to
+   delete once you have pulled these changes.
+   ========================================================================= */

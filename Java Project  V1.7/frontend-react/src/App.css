@@ -1,0 +1,1238 @@
+/* =========================
+   APP SHELL
+========================= */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-page);
+}
+
+
+/* =========================
+   PROMO BAR
+========================= */
+
+.promo-bar {
+  background: #10B981;
+  color: white;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.promo-bar strong {
+  font-weight: 700;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.top-header {
+  height: var(--header-height);
+  background: var(--bg-white);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 32px;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+  cursor: default;
+}
+
+.logo-main {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--emart-green);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.logo-main span {
+  font-size: 32px;
+  color: var(--emart-green-light);
+}
+
+.logo-tagline {
+  font-size: 11px;
+  color: var(--emart-orange);
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+
+/* SEARCH */
+
+.search-box {
+  display: flex;
+  position: relative;
+  height: 44px;
+  flex: 1;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.search-box input {
+  flex: 1;
+  border: 2px solid var(--border-color);
+  border-right: none;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  padding: 0 40px 0 16px;
+  font-size: 14px;
+  outline: none;
+  color: var(--text-primary);
+  background: var(--bg-white);
+  transition: border-color var(--transition-fast);
+}
+
+.search-box input::placeholder {
+  color: var(--text-light);
+}
+
+.search-box input:focus {
+  border-color: var(--emart-green-light);
+}
+
+/* Clear/reset the default <input type="search"> browser
+   "clear" affordance so our own ✕ button is the only one shown. */
+.search-box input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: var(--border-light);
+  color: var(--text-secondary);
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.search-clear-btn:hover {
+  background: var(--status-inactive-bg);
+  color: var(--status-inactive-text);
+}
+
+.search-box button[type="submit"] {
+  min-width: 96px;
+  background: var(--emart-green-light);
+  color: white;
+  border: none;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.search-box button[type="submit"]:hover {
+  background: var(--emart-green-hover);
+}
+
+
+/* HEADER ACTIONS */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  color: var(--text-primary);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s;
+}
+
+.user:hover {
+  background: var(--emart-green-bg);
+}
+
+.user-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  background: var(--emart-green-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--emart-green);
+  font-size: 16px;
+}
+
+/* Name on top, the Profile/Admin/Logout row directly under it.
+   The logout control is a <button> while the others are <a>, so
+   every shared property (font, size, colour, padding, line-height)
+   is reset below - otherwise the button sits on a different
+   baseline than the links and the row looks staggered. */
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  line-height: 1.2;
+}
+
+.user-name {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-menu a,
+.user-menu button {
+  /* Reset the button so it renders identically to the links. */
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--emart-green-dark, #157347);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.user-menu a:hover,
+.user-menu button:hover {
+  text-decoration: underline;
+}
+
+.cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: var(--emart-green-bg);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.cart:hover {
+  background: var(--emart-green-bg);
+  transform: translateY(-1px);
+}
+
+.cart:active {
+  transform: translateY(0);
+}
+
+.cart-icon {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: var(--emart-green);
+}
+
+/* Small circular count badge overlapping the top-right corner of
+   the cart icon - shows the number of items only (no price). */
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--emart-orange);
+  color: white;
+  border-radius: 50%;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  box-shadow: 0 0 0 2px var(--emart-green-bg);
+}
+
+.cart-action-wrap {
+  position: relative;
+}
+
+/* Brief inline message when a guest tries to add to cart (cart
+   mutations require sign-in) or a mutation fails - anchored under
+   the cart icon rather than blocking navigation with a modal. */
+.cart-action-error {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 20;
+  background: #fff4e5;
+  border: 1px solid var(--emart-orange, #e08a1e);
+  color: #7a4a00;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cart-action-error a {
+  color: #7a4a00;
+  text-decoration: underline;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navigation {
+  height: var(--nav-height);
+  background: var(--bg-white);
+  display: flex;
+  align-items: stretch;
+  border-bottom: 2px solid var(--emart-green-bg);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.navigation::-webkit-scrollbar {
+  display: none;
+}
+
+.navigation .nav-item {
+  padding: 0 22px;
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.navigation .nav-item:hover {
+  color: var(--emart-green);
+  background: var(--emart-green-soft);
+}
+
+.navigation .nav-item.active {
+  color: var(--emart-green);
+  font-weight: 700;
+  border-bottom-color: var(--emart-green-light);
+  background: var(--emart-green-bg);
+}
+
+.all-category {
+  font-weight: 700;
+  color: var(--emart-green);
+  border-right: 1px solid var(--border-light);
+  gap: 6px;
+}
+
+.nav-menu-icon {
+  font-size: 16px;
+}
+
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+.main-container {
+  display: flex;
+  flex: 1;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-white);
+  min-height: calc(100vh - var(--header-height) - var(--nav-height) - 36px);
+  border-right: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.sidebar h3 {
+  padding: 20px 22px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--emart-green);
+  border-bottom: 2px solid var(--emart-green-bg);
+  background: var(--emart-green-soft);
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding: 14px 22px;
+  border: none;
+  border-bottom: 1px solid var(--border-light);
+  background: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s, border-left 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-item:hover {
+  background: var(--emart-green-soft);
+  color: var(--emart-green);
+}
+
+.sidebar-item.active {
+  background: var(--emart-green-bg);
+  color: var(--emart-green);
+  font-weight: 700;
+  border-left-color: var(--emart-green-light);
+}
+
+.sidebar-count {
+  background: var(--emart-green-light);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  min-width: 22px;
+  text-align: center;
+}
+
+.sidebar-item.active .sidebar-count {
+  background: var(--emart-green);
+}
+
+.subcategory-menu {
+  padding: 6px 12px 10px 28px;
+  background: var(--emart-green-soft);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.subcategory-item {
+  width: 100%;
+  display: block;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  text-align: left;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.subcategory-item:hover,
+.subcategory-item.active {
+  background: var(--bg-white);
+  color: var(--emart-green);
+  font-weight: 700;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+  flex: 1;
+  padding: 28px 32px 40px;
+  min-width: 0;
+}
+
+.breadcrumb {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.breadcrumb span {
+  color: var(--emart-green);
+  font-weight: 600;
+}
+
+.page-title {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--emart-green-light);
+  border-radius: var(--radius-md);
+  padding: 22px 26px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.page-title h1 {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--emart-green-dark);
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+.page-title p {
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+  background: var(--emart-green-dark);
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: auto;
+  padding: 32px;
+}
+
+.footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
+}
+
+.footer-brand span {
+  color: var(--emart-green-light);
+}
+
+.footer-copy {
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+  .user strong {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .top-header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .search-box {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .header-actions {
+    margin-left: auto;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .content {
+    padding: 20px 16px 32px;
+  }
+
+  .page-title h1 {
+    font-size: 22px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* =========================
+   PRODUCT SECTION
+========================= */
+
+.product-section {
+  margin-top: 30px;
+}
+
+.product-section h2 {
+  color: var(--emart-green-dark);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+
+/* =========================
+   PRODUCT GRID
+========================= */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+
+/* =========================
+   PRODUCT CARD
+========================= */
+
+.product-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--emart-green-light);
+}
+
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
+.product-image {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--emart-green-soft);
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 15px;
+  transition: transform var(--transition-base);
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.product-placeholder {
+  font-size: 50px;
+  color: var(--text-muted);
+}
+
+
+/* =========================
+   PRODUCT INFORMATION
+========================= */
+
+.product-info {
+  padding: 18px;
+}
+
+.product-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.product-info p {
+  color: var(--text-muted);
+  font-size: 13px;
+  min-height: 40px;
+}
+
+
+/* =========================
+   PRICE
+========================= */
+
+.price-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 12px;
+}
+
+.mrp-price {
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: line-through;
+}
+
+.card-price {
+  color: var(--emart-green);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
+/* =========================
+   POINTS
+========================= */
+
+.points {
+  margin-top: 12px;
+  padding: 8px;
+  background: #fff8d9;
+  color: #8a6d00;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+
+/* =========================
+   ADD TO CART BUTTON
+========================= */
+
+.add-cart-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--emart-green);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.add-cart-btn:hover {
+  background: var(--emart-green-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.add-cart-btn:active {
+  transform: scale(0.98);
+}
+
+.add-cart-btn:disabled {
+  background: var(--border-color);
+  color: var(--text-light);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back-btn {
+  border: none;
+  background: var(--emart-green-bg);
+  color: var(--emart-green);
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: 600;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.back-btn:hover {
+  background: var(--emart-green);
+  color: white;
+}
+
+
+/* =========================
+   EMPTY PRODUCT MESSAGE
+========================= */
+
+.empty-products {
+  padding: 40px;
+  text-align: center;
+  background: var(--bg-white);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+}
+
+
+/* =========================
+   RESPONSIVE: TABLET
+========================= */
+
+@media (max-width: 1024px) {
+
+  .sidebar {
+    width: 220px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .main-container {
+    padding: 0 4px;
+  }
+
+}
+
+
+/* =========================
+   RESPONSIVE: MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .promo-bar {
+    font-size: 11px;
+  }
+
+  .navigation .nav-item {
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================
+   EMCARD CHECKBOX
+   (merged from category-frontend-updated: loyalty points
+   redemption UI used on product cards, product details, and
+   the cart drawer)
+========================= */
+
+.emcard-row {
+  margin-top: 10px;
+}
+
+.emcard-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+.emcard-checkbox-label input[type="checkbox"] {
+  margin-top: 2px;
+  width: 15px;
+  height: 15px;
+  accent-color: var(--emart-green);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.emcard-error {
+  margin-top: 6px;
+  padding: 6px 8px;
+  background: var(--status-inactive-bg, #fdeaea);
+  color: var(--status-inactive-text, #b3261e);
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.emcard-free-label {
+  color: var(--emart-green);
+  font-weight: 700;
+}
+
+
+/* =========================
+   EMCARD HEADER BALANCE
+========================= */
+
+.emcard-balance {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  color: var(--text-primary);
+  font-size: 13px;
+  background: var(--emart-green-bg);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.emcard-balance strong {
+  color: var(--emart-green-dark);
+}
+
+
+/* =========================
+   SALE BANNER
+   Homepage promo banner rendered directly below the top
+   navigation (see App.jsx's <Home />, between .navigation and
+   .main-container). Clickable end-to-end (role="button"),
+   with its own close/dismiss control and a loading skeleton
+   shown while GET /api/product/sale-random is in flight.
+========================= */
+
+.sale-banner {
+  /* Enlarged (BRD follow-up: "make the banner little bigger like
+     all categories is displayed") - bigger padding/product image/
+     type scale so it reads with the same visual weight as the
+     200px-tall category cards below it, instead of a slim strip. */
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  margin: 18px auto 0;
+  max-width: 1440px;
+  width: calc(100% - 32px);
+  padding: 28px 60px 28px 32px;
+  background: linear-gradient(
+    90deg,
+    var(--emart-green) 0%,
+    var(--emart-green-light) 100%
+  );
+  color: white;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.sale-banner:hover,
+.sale-banner:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  outline: none;
+}
+
+.sale-banner:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.sale-banner-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
+}
+
+.sale-banner-close:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.sale-banner-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sale-banner-flame {
+  font-size: 24px;
+}
+
+.sale-banner-product {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.sale-banner-image {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sale-banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sale-banner-placeholder {
+  font-size: 44px;
+}
+
+.sale-banner-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.sale-banner-name {
+  font-size: 19px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 340px;
+}
+
+.sale-banner-price-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sale-banner-discounted-price {
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.sale-banner-original-price {
+  font-size: 16px;
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+
+.sale-banner-discount-pct {
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--emart-orange);
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+}
+
+.sale-banner-countdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  white-space: nowrap;
+}
+
+.sale-banner-cta {
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Loading skeleton shown while GET /api/product/sale-random is
+   in flight - kept the same overall footprint as the loaded
+   banner so nothing shifts when the real content pops in. */
+.sale-banner-loading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: default;
+}
+
+.sale-banner-skeleton-media,
+.sale-banner-skeleton-line {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-sm);
+  animation: sale-banner-pulse 1.4s ease-in-out infinite;
+}
+
+.sale-banner-skeleton-media {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.sale-banner-skeleton-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.sale-banner-skeleton-line {
+  height: 18px;
+}
+
+.sale-banner-skeleton-line-wide {
+  width: 60%;
+  max-width: 380px;
+}
+
+.sale-banner-skeleton-line-narrow {
+  width: 35%;
+  max-width: 220px;
+}
+
+@keyframes sale-banner-pulse {
+  0%, 100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@media (max-width: 860px) {
+  .sale-banner {
+    padding: 22px 48px 22px 24px;
+  }
+
+  .sale-banner-image,
+  .sale-banner-skeleton-media {
+    width: 90px;
+    height: 90px;
+  }
+
+  .sale-banner-cta {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .sale-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .sale-banner-product {
+    width: 100%;
+  }
+
+  .sale-banner-image,
+  .sale-banner-skeleton-media {
+    width: 84px;
+    height: 84px;
+  }
+
+  .sale-banner-name {
+    max-width: 100%;
+  }
+
+  .sale-banner-discounted-price {
+    font-size: 22px;
+  }
+
+  .sale-banner-cta {
+    width: 100%;
+    text-align: right;
+  }
+}

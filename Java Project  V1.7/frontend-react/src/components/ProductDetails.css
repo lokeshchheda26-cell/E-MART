@@ -1,0 +1,304 @@
+.product-details-page {
+    padding: 10px 0;
+}
+
+.product-details-status {
+    padding: 60px 0;
+    text-align: center;
+    color: #777;
+    font-size: 15px;
+}
+
+.product-details-container {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 40px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.product-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.main-image {
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5fff7;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 15px;
+}
+
+.product-placeholder-large {
+    color: #888;
+    font-size: 60px;
+}
+
+.thumbnail-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.thumbnail {
+    width: 64px;
+    height: 64px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #f5fff7;
+}
+
+.thumbnail.active {
+    border-color: var(--emart-green);
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.product-detail-info h1 {
+    font-size: 26px;
+    color: #222;
+    margin-bottom: 12px;
+}
+
+.product-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 14px;
+}
+
+.product-price {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--emart-green);
+    margin-bottom: 10px;
+}
+
+/* Purchase mode (Mode 1..4) chip above the price */
+.purchase-mode-chip {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    color: #3730a3;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+/* Mode 4: the mandatory point half of the price, next to the cash half */
+.product-points-part {
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--emart-green);
+}
+
+.emcard-savings {
+    margin-bottom: 8px;
+    color: var(--emart-green);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Modes 3 and 4 - no checkbox, the points are part of the price */
+.emcard-mandatory {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: #f5f3ff;
+    border: 1px solid #ddd6fe;
+}
+
+.emcard-mandatory-value {
+    color: var(--emart-green);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.emcard-mandatory-note {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #6b7280;
+}
+
+/* Original (pre-sale) MRP shown next to the sale price */
+.product-original-price {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #888;
+    text-decoration: line-through;
+}
+
+.product-discount-pct {
+    margin-left: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #ff5722;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    vertical-align: middle;
+}
+
+.stock-status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.stock-status.in-stock {
+    background: var(--emart-green-bg);
+    color: var(--emart-green);
+}
+
+.stock-status.out-of-stock {
+    background: #fdeaea;
+    color: #c0392b;
+}
+
+.product-detail-info .points {
+    display: inline-block;
+    margin-left: 12px;
+    padding: 6px 10px;
+    background: #fff8d9;
+    color: #8a6d00;
+    border-radius: 5px;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.product-description {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* =========================
+   SPECIFICATIONS
+========================= */
+
+.specifications-section h3 {
+    color: var(--emart-green-dark);
+    margin-bottom: 12px;
+}
+
+.specifications-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 28px;
+}
+
+.specifications-table tr {
+    border-bottom: 1px solid #eee;
+}
+
+.specifications-table td {
+    padding: 10px 8px;
+    font-size: 14px;
+}
+
+.spec-name {
+    width: 40%;
+    color: #777;
+    font-weight: 600;
+}
+
+.spec-value {
+    color: #222;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.product-actions {
+    display: flex;
+    gap: 14px;
+}
+
+.product-actions .add-cart-btn,
+.product-actions .buy-now-btn {
+    flex: 1;
+    width: auto;
+    margin-top: 0;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.product-actions .add-cart-btn {
+    background: var(--emart-green-bg);
+    color: var(--emart-green);
+    border: 2px solid var(--emart-green);
+}
+
+.product-actions .add-cart-btn:hover {
+    background: #d9f2e1;
+}
+
+.product-actions .buy-now-btn {
+    background: var(--emart-green);
+    color: white;
+}
+
+.product-actions .buy-now-btn:hover {
+    background: var(--emart-green-dark);
+}
+
+.product-actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.product-card-clickable {
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
+    .product-details-container {
+        grid-template-columns: 1fr;
+    }
+}

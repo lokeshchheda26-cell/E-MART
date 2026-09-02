@@ -1,0 +1,251 @@
+/* =========================================================================
+   PRODUCT GRID + PRODUCT CARD
+   -------------------------------------------------------------------------
+   Owned by ProductCard.jsx and rendered by CategoryList.jsx and the home
+   page's product rails. All values come from the design tokens.
+   ========================================================================= */
+
+/* -------------------------------------------------------------- THE GRID
+   auto-fill with a minimum track width rather than fixed column counts per
+   breakpoint: the grid finds its own comfortable column count at every
+   width, including the awkward sizes between the named breakpoints. */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+  gap: var(--space-5);
+  align-items: stretch;
+}
+
+@media (max-width: 575.98px) {
+  .product-grid {
+    /* Two columns on a phone rather than one: shoppers scan a grid far
+       faster than a single tall column, and the card is designed to stay
+       legible at this width. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+}
+
+/* A horizontally scrolling rail, used for the homepage product bands where
+   a full grid would push the rest of the page below the fold. */
+.product-rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(232px, 1fr);
+  gap: var(--space-5);
+  overflow-x: auto;
+  padding-bottom: var(--space-3);
+  scroll-snap-type: x mandatory;
+}
+
+.product-rail > * {
+  scroll-snap-align: start;
+}
+
+@media (min-width: 992px) {
+  /* Enough room for a full row - drop the scrolling behaviour entirely
+     rather than leaving a scrollbar under four items. */
+  .product-rail {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+    overflow-x: visible;
+  }
+}
+
+/* ------------------------------------------------------------- THE CARD */
+
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  overflow: hidden;
+  transition: transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary-border);
+  box-shadow: var(--shadow-lg);
+}
+
+/* The card is one tab stop (the title button). Show the focus ring on the
+   whole card so keyboard users see what they are about to open. */
+.product-card:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring);
+}
+
+/* --- media ---
+   Fixed square box + object-fit: contain. This is what stops the grid
+   reflowing as images stream in, and what keeps a 2000x2000 phone render
+   and a 400x300 packet shot occupying the same slot. */
+
+.product-card__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  background: var(--surface-image);
+  overflow: hidden;
+}
+
+.product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--space-4);
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.product-card:hover .product-card__img {
+  transform: scale(1.04);
+}
+
+.product-card__placeholder {
+  font-size: 2.25rem;
+  color: var(--text-subtle);
+}
+
+.product-card__flags {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  z-index: 2;
+}
+
+.product-card__soldout {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--text-strong);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+/* --- body --- */
+
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  flex: 1 1 auto;
+}
+
+.product-card__brand {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.product-card__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  color: var(--text-strong);
+  /* Two lines of title, always - so every card in a row is the same
+     height whether the product is "Tea" or a 90-character SKU name. */
+  min-height: calc(2 * var(--text-base) * 1.3);
+}
+
+.product-card__link {
+  display: block;
+  width: 100%;
+  padding: 0;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  background: none;
+}
+
+/* Expands the title button's hit area to the whole card, so a click
+   anywhere opens the product - without nesting interactive elements. */
+.product-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.product-card__link:focus-visible {
+  outline: none;
+}
+
+.product-card__link:hover {
+  color: var(--color-primary);
+}
+
+.product-card__desc {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* Everything below the title has to sit ABOVE the card-wide click target,
+   otherwise the offer checkbox and Add to cart would open the product
+   instead of doing their own job. */
+.product-card__offer-slot,
+.product-card__actions,
+.product-card .ui-rating {
+  position: relative;
+  z-index: 2;
+}
+
+.product-card__offer-slot:empty {
+  display: none;
+}
+
+.product-card__actions {
+  margin-top: auto;
+  padding-top: var(--space-2);
+}
+
+.product-card__stock-warning {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-warning);
+}
+
+@media (max-width: 575.98px) {
+  .product-card__body {
+    padding: var(--space-3);
+    gap: var(--space-1);
+  }
+
+  .product-card__title {
+    font-size: var(--text-sm);
+    min-height: calc(2 * var(--text-sm) * 1.3);
+  }
+
+  .product-card__cta {
+    font-size: var(--text-xs);
+    min-height: 38px;
+  }
+
+  /* The offer block is valuable but not at the cost of a phone card being
+     twice as tall as it needs to be - keep it, tighten it. */
+  .product-card__offer-slot .ui-offer {
+    padding: var(--space-2);
+  }
+
+  .product-card__offer-slot .ui-offer__label {
+    font-size: var(--text-xs);
+  }
+}

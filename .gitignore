@@ -1,0 +1,25 @@
+# Node
+node_modules/
+dist/
+*.log
+
+# .NET
+bin/
+obj/
+.vs/
+
+# Java / Maven / Eclipse
+target/
+.metadata/
+.settings/
+.classpath
+.project
+logs/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Windows
+desktop.ini

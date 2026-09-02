@@ -1,0 +1,64 @@
+/* =========================================================================
+   APP-LEVEL STYLES
+   -------------------------------------------------------------------------
+   This file used to hold the home page's entire bespoke layout (its own
+   header, nav, sidebar and footer), which was the main reason the home page
+   looked like a different application to every other route. That layout is
+   gone: the site chrome now lives in styles/layout.css and is shared by
+   every page, and the home page's own bands live in styles/home.css.
+
+   What is left here is genuinely app-wide and belongs nowhere else: the
+   print stylesheet. It was previously injected as an inline <style> block
+   from inside Invoice.jsx, which meant print rules were only present when
+   that one component happened to be mounted.
+   ========================================================================= */
+
+@media print {
+  /* Chrome, actions and anything else marked no-print never reaches paper. */
+  .site-header,
+  .cat-nav,
+  .site-footer,
+  .announce-bar,
+  .newsletter,
+  .ui-toast-viewport,
+  .no-print {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Printed output is read on white paper - drop the screen elevation and
+     let the browser's own page margins do the framing. */
+  .print-area,
+  .print-area .ui-card,
+  .print-area .card {
+    box-shadow: none !important;
+    border: none !important;
+    background: #fff !important;
+  }
+
+  .print-area {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .page {
+    padding-block: 0 !important;
+  }
+
+  /* Keep table rows and summary blocks from splitting across pages. */
+  tr,
+  .print-keep {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  a[href]::after {
+    content: "";
+  }
+}

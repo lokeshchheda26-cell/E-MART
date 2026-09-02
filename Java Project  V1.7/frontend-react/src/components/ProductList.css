@@ -1,0 +1,211 @@
+.product-section {
+    padding: 10px 0;
+}
+
+.back-btn {
+    border: none;
+    background: var(--emart-green-bg);
+    color: var(--emart-green);
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.product-section h2 {
+    color: var(--emart-green-dark);
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.1);
+}
+
+.product-image {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5fff7;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 15px;
+}
+
+.product-placeholder {
+    color: #888;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.product-info {
+    padding: 18px;
+}
+
+.product-info h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.product-info p {
+    color: #777;
+    font-size: 13px;
+    min-height: 40px;
+}
+
+.price {
+    margin-top: 12px;
+    color: #777;
+}
+
+.price-value {
+    white-space: nowrap;
+}
+
+.card-price {
+    margin-top: 8px;
+    color: var(--emart-green);
+}
+
+.card-price strong {
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.points {
+    margin-top: 10px;
+    padding: 8px;
+    background: #fff8d9;
+    color: #8a6d00;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.add-cart-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 11px;
+    border: none;
+    border-radius: 6px;
+    background: var(--emart-green);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.add-cart-btn:hover {
+    background: var(--emart-green-dark);
+}
+
+/* ---- Product listing page pricing layout ----
+   Bordered box around the product name, plain Regular Price line,
+   and an eMcard/Membership price line with its own opt-in
+   checkbox (hidden entirely for products with no membership
+   discount) - see CategoryList.jsx "products mode". */
+
+.product-name-box {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+}
+
+.product-name-box h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.regular-price-row {
+    margin-top: 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.regular-price-label {
+    color: #777;
+    font-size: 13px;
+}
+
+.regular-price-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+}
+
+.emcard-price-row {
+    margin-top: 8px;
+}
+
+/* What the eMCard offer saves on this card, under the checkbox */
+.emcard-savings-note {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--emart-green);
+}
+
+/* Fallback for an offer the backend reports as non-optional: shown as a
+   read-only badge instead of a checkbox. */
+.emcard-mode-badge {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+}
+
+.emcard-mode-value {
+    color: var(--emart-green);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.emcard-mode-note {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #6b7280;
+}
+
+.emcard-price-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--emart-green);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.emcard-price-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}

@@ -1,0 +1,427 @@
+/* =========================================================================
+   ACCOUNT PAGES
+   -------------------------------------------------------------------------
+   Shared by Profile, Edit profile, Change password and the admin dashboard,
+   so every "my account" screen uses the same header, the same two-column
+   shell and the same fact list rather than three near-miss variations.
+   ========================================================================= */
+
+.account-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+}
+
+.account-header__avatar {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--brand-600), var(--loyalty-600));
+  color: #fff;
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-extrabold);
+}
+
+.account-header__info {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+.account-header__name {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-extrabold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-strong);
+}
+
+.account-header__meta {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.account-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+@media (max-width: 575.98px) {
+  .account-header {
+    padding: var(--space-5);
+  }
+
+  .account-header__actions {
+    width: 100%;
+  }
+
+  .account-header__actions .ui-btn {
+    flex: 1 1 auto;
+  }
+}
+
+/* ================================================================ SHELL */
+
+.account-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.account-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+.account-aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+@media (min-width: 992px) {
+  .account-layout {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: var(--space-8);
+  }
+}
+
+/* ================================================================ FACTS */
+
+.account-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-5);
+  margin: 0;
+}
+
+.account-facts__wide {
+  grid-column: 1 / -1;
+}
+
+.account-facts dt {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.account-facts dd {
+  margin: 0;
+  font-size: var(--text-md);
+  font-weight: var(--weight-medium);
+  color: var(--text-strong);
+  overflow-wrap: anywhere;
+}
+
+/* ================================================================ ASIDE */
+
+.account-aside__note {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-loyalty-border);
+  border-radius: var(--radius-md);
+  background: var(--color-loyalty-soft);
+  font-size: var(--text-sm);
+  color: var(--loyalty-700);
+}
+
+.account-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-default);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.account-link:last-child {
+  border-bottom: none;
+}
+
+.account-link:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.account-link__chevron {
+  margin-left: auto;
+  color: var(--text-subtle);
+  font-size: var(--text-xs);
+}
+
+/* ============================================================ FORM PAGE
+   Edit profile / change password: a single centred column, because a form
+   with a sidebar beside it invites the reader's eye away mid-entry. */
+
+.account-form {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.account-form__note {
+  margin-bottom: var(--space-5);
+}
+
+.account-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.account-form__actions .ui-btn {
+  flex: 1 1 180px;
+}
+
+/* ================================================================ ADMIN */
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.admin-stat {
+  padding: var(--space-5);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+}
+
+.admin-stat__label {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.admin-stat__value {
+  margin-top: var(--space-2);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-extrabold);
+  color: var(--text-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  min-width: 680px;
+  font-size: var(--text-sm);
+}
+
+.admin-table th,
+.admin-table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.admin-table thead th {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--surface-sunken);
+}
+
+.admin-table tbody tr:hover {
+  background: var(--surface-sunken);
+}
+
+.admin-user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.admin-user__avatar {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+}
+
+.admin-user__name {
+  font-weight: var(--weight-semibold);
+  color: var(--text-strong);
+}
+
+.admin-user__email {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* ======================================================= STATIC CONTENT
+   About and Contact. */
+
+.content-hero {
+  padding: var(--space-10) var(--space-8);
+  margin-bottom: var(--space-8);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 88% 15%, rgba(139, 92, 246, 0.16), transparent 50%),
+    linear-gradient(135deg, var(--brand-800), var(--brand-600));
+  color: #fff;
+}
+
+.content-hero__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-extrabold);
+  letter-spacing: var(--tracking-tight);
+  color: #fff;
+}
+
+.content-hero__text {
+  margin-top: var(--space-3);
+  max-width: 62ch;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: var(--leading-relaxed);
+}
+
+@media (min-width: 768px) {
+  .content-hero__title {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .content-hero {
+    padding: var(--space-6) var(--space-5);
+  }
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.team-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  transition: transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.team-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.team-card__avatar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--brand-500), var(--loyalty-500));
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+}
+
+.team-card__name {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-strong);
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .contact-layout {
+    grid-template-columns: 340px minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+.contact-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.contact-detail:last-child {
+  border-bottom: none;
+}
+
+.contact-detail__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: var(--text-md);
+}
+
+.contact-detail__label {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.contact-detail__value {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-strong);
+  overflow-wrap: anywhere;
+}

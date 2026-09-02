@@ -1,0 +1,28 @@
+/* =========================================================================
+   E-MART - STYLESHEET ENTRY POINT
+   -------------------------------------------------------------------------
+   Imported once from src/main.jsx. This file contains no rules of its own;
+   it exists purely to define the CASCADE ORDER of the design system, which
+   is what lets the rest of the codebase avoid !important entirely.
+
+   Order matters, low specificity first:
+
+     1. tokens      - CSS custom properties only. No selectors that paint.
+     2. base        - reset, document defaults, typography, focus, utilities.
+     3. components  - the shared UI vocabulary (buttons, cards, fields...).
+     4. layout      - site chrome: header, nav, footer, page shells.
+     5. home        - the homepage bands.
+     6. theme       - dark-mode token overrides. LAST, so it always wins.
+
+   Per-component stylesheets (components/ProductList.css, CartDrawer.css,
+   ProductDetails.css, CategoryList.css) are imported by the components
+   themselves and land between 5 and 6 in the bundle. They only ever style
+   their own block, so their position in the cascade is not load-bearing.
+   ========================================================================= */
+
+@import "./styles/tokens.css";
+@import "./styles/base.css";
+@import "./styles/components.css";
+@import "./styles/layout.css";
+@import "./styles/home.css";
+@import "./styles/theme.css";

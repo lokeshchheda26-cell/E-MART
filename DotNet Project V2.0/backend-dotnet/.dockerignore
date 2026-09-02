@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+**/.vs/
+.vs/
+tests/
+*.zip
+*.user
+*.suo
+.git/
+.gitignore

@@ -1,0 +1,167 @@
+/* =========================================================================
+   E-MART DARK THEME
+   -------------------------------------------------------------------------
+   Dark mode is implemented by overriding SEMANTIC tokens only - the brand
+   ramps in tokens.css stay exactly as they are. That means a component
+   written against `var(--surface-card)` / `var(--text-strong)` re-themes
+   for free, and no component needs a `[data-theme="dark"]` rule of its own.
+
+   `data-theme` (and Bootstrap's `data-bs-theme`) are set on <html> by
+   src/context/ThemeContext.jsx. Imported last so these overrides always
+   win on cascade order without needing !important.
+   ========================================================================= */
+
+[data-theme="dark"] {
+  /* Brand colours are lightened a step in dark mode: the 600-weight
+     indigo that reads confidently on white does not carry enough
+     luminance contrast against a near-black surface. */
+  --color-primary: var(--brand-400);
+  --color-primary-hover: var(--brand-300);
+  --color-primary-active: var(--brand-200);
+  --color-primary-soft: rgba(99, 102, 241, 0.16);
+  --color-primary-border: rgba(129, 140, 248, 0.42);
+  --color-on-primary: #0b1020;
+
+  --color-accent: var(--accent-400);
+  --color-accent-hover: var(--accent-300);
+  --color-accent-soft: rgba(245, 158, 11, 0.14);
+  --color-accent-border: rgba(251, 191, 36, 0.38);
+  --color-on-accent: #2a1904;
+
+  --color-loyalty: var(--loyalty-400);
+  --color-loyalty-hover: var(--loyalty-200);
+  --color-loyalty-soft: rgba(139, 92, 246, 0.16);
+  --color-loyalty-border: rgba(167, 139, 250, 0.4);
+  --color-on-loyalty: #16091f;
+
+  --color-success: var(--success-500);
+  --color-success-soft: rgba(16, 185, 129, 0.14);
+  --color-success-border: rgba(16, 185, 129, 0.34);
+
+  --color-danger: var(--danger-500);
+  --color-danger-soft: rgba(244, 63, 94, 0.14);
+  --color-danger-border: rgba(244, 63, 94, 0.34);
+
+  --color-warning: var(--accent-400);
+  --color-warning-soft: rgba(245, 158, 11, 0.14);
+  --color-warning-border: rgba(245, 158, 11, 0.34);
+
+  /* Surfaces: a layered near-black rather than pure #000, so elevation
+     still reads and large areas do not smear on OLED panels. */
+  --surface-page: #0b1120;
+  --surface-card: #131c31;
+  --surface-raised: #1a2440;
+  --surface-sunken: #1a2338;
+  --surface-inverse: var(--neutral-100);
+  --surface-overlay: rgba(2, 6, 23, 0.72);
+  --surface-skeleton: #1e293b;
+  --surface-image: #1a2338;
+
+  --text-strong: #f1f5f9;
+  --text-default: #dbe3ee;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+  --text-inverse: var(--neutral-900);
+  --text-link: var(--brand-300);
+
+  --border-subtle: rgba(148, 163, 184, 0.16);
+  --border-default: rgba(148, 163, 184, 0.28);
+  --border-strong: rgba(148, 163, 184, 0.45);
+
+  /* Shadows carry almost no information on a dark surface - deepen them
+     so elevated panels still separate from the page. */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.4), 0 6px 16px rgba(0, 0, 0, 0.36);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.44);
+  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.44), 0 28px 56px rgba(0, 0, 0, 0.5);
+  --shadow-primary: 0 6px 18px rgba(99, 102, 241, 0.34);
+  --shadow-accent: 0 6px 18px rgba(245, 158, 11, 0.28);
+
+  --focus-ring: 0 0 0 3px rgba(129, 140, 248, 0.45);
+  --focus-ring-danger: 0 0 0 3px rgba(244, 63, 94, 0.4);
+
+  color-scheme: dark;
+}
+
+/* -------------------------------------------------------------------------
+   Bootstrap bridge for dark mode. Bootstrap 5.3 handles most of this itself
+   via data-bs-theme; these few variables keep its palette in step with the
+   lightened brand colours above.
+   ------------------------------------------------------------------------- */
+
+[data-theme="dark"] {
+  --bs-body-bg: var(--surface-page);
+  --bs-body-color: var(--text-default);
+  --bs-border-color: var(--border-subtle);
+
+  --bs-primary: #818cf8;
+  --bs-primary-rgb: 129, 140, 248;
+  --bs-primary-bg-subtle: rgba(99, 102, 241, 0.16);
+  --bs-primary-border-subtle: rgba(129, 140, 248, 0.4);
+
+  --bs-warning: #fbbf24;
+  --bs-warning-rgb: 251, 191, 36;
+  --bs-warning-bg-subtle: rgba(245, 158, 11, 0.16);
+  --bs-warning-border-subtle: rgba(245, 158, 11, 0.4);
+
+  --bs-success: #10b981;
+  --bs-success-rgb: 16, 185, 129;
+  --bs-success-bg-subtle: rgba(16, 185, 129, 0.16);
+  --bs-success-border-subtle: rgba(16, 185, 129, 0.4);
+
+  --bs-danger: #f43f5e;
+  --bs-danger-rgb: 244, 63, 94;
+  --bs-danger-bg-subtle: rgba(244, 63, 94, 0.16);
+  --bs-danger-border-subtle: rgba(244, 63, 94, 0.4);
+
+  --bs-link-color: #a5b4fc;
+  --bs-link-color-rgb: 165, 180, 252;
+  --bs-link-hover-color: #c7d2fe;
+  --bs-link-hover-color-rgb: 199, 210, 254;
+}
+
+/* -------------------------------------------------------------------------
+   The handful of places that legitimately need a dark-specific rule,
+   because they are not expressible as a token swap.
+   ------------------------------------------------------------------------- */
+
+/* The footer and the eMCard band are already dark surfaces in light mode.
+   In dark mode they need to sit slightly ABOVE the page, not below it,
+   otherwise they disappear into the background. */
+[data-theme="dark"] .site-footer,
+[data-theme="dark"] .emcard-band {
+  background: var(--surface-card);
+  border-top: 1px solid var(--border-subtle);
+}
+
+[data-theme="dark"] .emcard-band {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(139, 92, 246, 0.2), transparent 50%),
+    var(--surface-card);
+}
+
+/* Product photography is overwhelmingly shot on white. Left untouched it
+   burns a bright rectangle into a dark page - a soft plate behind the image
+   keeps the contrast comfortable without altering the product itself. */
+[data-theme="dark"] .product-card__media,
+[data-theme="dark"] .deal-card__media,
+[data-theme="dark"] .pdp-gallery__main,
+[data-theme="dark"] .cart-line__media {
+  background: #f8fafc;
+}
+
+/* Bootstrap's .bg-white / .bg-light are used on a few older page sections;
+   without these they punch a white hole in an otherwise dark page. */
+[data-theme="dark"] .bg-white,
+[data-theme="dark"] .bg-light {
+  background-color: var(--surface-card) !important;
+}
+
+[data-theme="dark"] .text-dark {
+  color: var(--text-strong) !important;
+}
+
+[data-theme="dark"] .border {
+  border-color: var(--border-subtle) !important;
+}

@@ -1,0 +1,1561 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   GLOBAL ROOT / DESIGN SYSTEM
+========================================================= */
+
+:root {
+
+  /* =========================
+     EMART BRAND COLORS
+     (Indigo + Lime palette)
+  ========================= */
+
+  --emart-green: #4F46E5;        /* Indigo - primary brand/action color */
+  --emart-green-light: #6366F1;
+  --emart-green-dark: #4338CA;
+  --emart-green-hover: #4338CA;
+  --emart-green-bg: #EEF2FF;     /* soft indigo tint for badges/backgrounds */
+  --emart-green-soft: #F5F3FF;
+
+  --emart-lime: #84CC16;         /* Lime - accent color (CTAs, highlights) */
+  --emart-lime-dark: #65A30D;
+  --emart-lime-bg: #F7FEE7;
+
+  --emart-orange: #f15a29;
+  --emart-yellow: #84CC16;       /* legacy "yellow" CTA slots now use lime */
+
+
+  /* =========================
+     TEXT COLORS
+  ========================= */
+
+  --text-primary: #1E293B;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+
+
+  /* =========================
+     BACKGROUNDS
+  ========================= */
+
+  --bg-page: #F8FAFC;
+  --bg-white: #ffffff;
+
+
+  /* =========================
+     BORDERS
+  ========================= */
+
+  --border-color: #e0e0e0;
+  --border-light: #eeeeee;
+
+
+  /* =========================
+     STATUS COLORS
+  ========================= */
+
+  --status-active-bg: #F7FEE7;
+  --status-active-text: #65A30D;
+
+  --status-inactive-bg: #fff0f0;
+  --status-inactive-text: #d32f2f;
+
+
+  /* =========================
+     SHADOWS
+  ========================= */
+
+  --shadow-sm:
+    0 1px 3px rgba(0, 0, 0, 0.06);
+
+  --shadow-md:
+    0 4px 12px rgba(0, 0, 0, 0.08);
+
+  --shadow-lg:
+    0 8px 24px rgba(79, 70, 229, 0.1);
+
+  --shadow-xl:
+    0 16px 40px rgba(67, 56, 202, 0.16);
+
+
+  /* =========================
+     MOTION
+  ========================= */
+
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --focus-ring: 0 0 0 3px rgba(79, 70, 229, 0.22);
+
+
+  /* =========================
+     LAYOUT
+  ========================= */
+
+  --header-height: 72px;
+  --nav-height: 48px;
+  --sidebar-width: 260px;
+
+
+  /* =========================
+     BORDER RADIUS
+  ========================= */
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+
+  /* =====================================================
+     AUTHENTICATION DESIGN SYSTEM
+     (unified with the EMART brand palette above, rather
+     than the generic Bootstrap blue this used to be, so
+     Login/Register/Profile/Navbar match the rest of the app)
+  ===================================================== */
+
+  --em-primary: var(--emart-green);
+  --em-primary-dark: var(--emart-green-dark);
+  --em-primary-light: var(--emart-green-bg);
+
+  --em-secondary: #6c757d;
+  --em-success: #65A30D;
+  --em-danger: #dc3545;
+  --em-light: #f8f9fa;
+
+
+  --em-radius-sm: 0.5rem;
+  --em-radius: 0.875rem;
+  --em-radius-lg: 1.25rem;
+
+
+  --em-shadow-sm:
+    0 0.25rem 0.75rem rgba(79, 70, 229, 0.08);
+
+  --em-shadow:
+    0 0.75rem 2rem rgba(30, 41, 59, 0.1);
+
+
+  --em-gradient:
+    linear-gradient(
+      135deg,
+      var(--emart-green) 0%,
+      var(--emart-green-dark) 100%
+    );
+
+
+  /* =========================
+     GLOBAL FONT
+  ========================= */
+
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+
+  color: var(--text-primary);
+
+  background: var(--bg-page);
+
+  font-synthesis: none;
+
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+
+/* =========================================================
+   BOOTSTRAP THEME OVERRIDE
+   Bootstrap 5.3's own components (.btn-primary, .btn-warning,
+   .text-primary, .border-primary, .form-check-input:checked, etc.)
+   read from these CSS variables, so overriding them here re-themes
+   every stock Bootstrap class across the app to Indigo + Lime
+   without having to hunt down each usage individually.
+========================================================= */
+
+:root {
+
+  --bs-primary: #4F46E5;
+  --bs-primary-rgb: 79, 70, 229;
+  --bs-primary-text-emphasis: #4338CA;
+  --bs-primary-bg-subtle: #EEF2FF;
+  --bs-primary-border-subtle: #C7D2FE;
+
+  /* Most of the app's main CTAs use Bootstrap's "warning" (originally
+     yellow) - remap it to the lime accent color so those buttons
+     match the new palette without renaming every usage. */
+  --bs-warning: #84CC16;
+  --bs-warning-rgb: 132, 204, 22;
+  --bs-warning-text-emphasis: #65A30D;
+  --bs-warning-bg-subtle: #F7FEE7;
+  --bs-warning-border-subtle: #D9F99D;
+
+  --bs-link-color: #4F46E5;
+  --bs-link-color-rgb: 79, 70, 229;
+  --bs-link-hover-color: #4338CA;
+  --bs-link-hover-color-rgb: 67, 56, 202;
+
+  /* "Savings"/discount/paid-status green, tuned to sit in the same
+     family as the lime accent instead of Bootstrap's default green
+     clashing next to it. */
+  --bs-success: #65A30D;
+  --bs-success-rgb: 101, 163, 13;
+  --bs-success-text-emphasis: #3F6212;
+  --bs-success-bg-subtle: #F7FEE7;
+  --bs-success-border-subtle: #D9F99D;
+
+  --bs-body-bg: #F8FAFC;
+  --bs-body-color: #1E293B;
+}
+
+
+/* =========================================================
+   GLOBAL MICRO-INTERACTIONS
+   Subtle, sitewide hover polish so buttons/cards feel responsive
+   without needing per-page animation work. Respects
+   prefers-reduced-motion for accessibility.
+========================================================= */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  .btn {
+
+    transition:
+      transform var(--transition-fast),
+      box-shadow var(--transition-fast),
+      background-color var(--transition-fast),
+      border-color var(--transition-fast),
+      opacity var(--transition-fast);
+
+  }
+
+  .btn:hover:not(:disabled) {
+
+    transform:
+      translateY(-1px);
+
+  }
+
+  .btn:active:not(:disabled) {
+
+    transform:
+      translateY(0);
+
+  }
+
+  .card {
+
+    transition:
+      box-shadow var(--transition-base),
+      transform var(--transition-base);
+
+  }
+
+}
+
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+}
+
+
+html {
+
+  width: 100%;
+
+  min-height: 100%;
+
+}
+
+
+body {
+
+  margin: 0;
+
+  min-height: 100vh;
+
+  width: 100%;
+
+  background-color: var(--bg-page);
+
+  color: var(--text-primary);
+
+}
+
+
+#root {
+
+  width: 100%;
+
+  min-height: 100vh;
+
+}
+
+
+/* =========================================================
+   GLOBAL ELEMENTS
+========================================================= */
+
+button {
+
+  font-family: inherit;
+
+}
+
+
+input {
+
+  font-family: inherit;
+
+}
+
+
+a {
+
+  color: var(--emart-green);
+
+  text-decoration: none;
+
+}
+
+
+a:hover {
+
+  color: var(--emart-green-hover);
+
+}
+
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+
+  outline: none;
+
+  box-shadow: var(--focus-ring);
+
+  border-radius: var(--radius-sm);
+
+}
+
+
+/* =========================================================
+   SHARED UI PRIMITIVES
+   (spinner, empty/error states, toast-style messages -
+   reused across product search, forms, and any async view
+   instead of every page inventing its own loading/empty UI)
+========================================================= */
+
+.spinner {
+
+  display: inline-block;
+
+  width: 16px;
+
+  height: 16px;
+
+  border: 2px solid rgba(8, 127, 62, 0.2);
+
+  border-top-color: var(--emart-green);
+
+  border-radius: 50%;
+
+  animation: em-spin 0.7s linear infinite;
+
+  vertical-align: middle;
+
+}
+
+.spinner-lg {
+
+  width: 32px;
+
+  height: 32px;
+
+  border-width: 3px;
+
+}
+
+@keyframes em-spin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+.page-loading {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 64px 24px;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+
+}
+
+
+.empty-state {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 48px 24px;
+
+  color: var(--text-secondary);
+
+  background: var(--bg-white);
+
+  border: 1px dashed var(--border-color);
+
+  border-radius: var(--radius-lg);
+
+}
+
+.empty-state-icon {
+
+  font-size: 40px;
+
+  margin-bottom: 8px;
+
+  opacity: 0.8;
+
+}
+
+.empty-state h3 {
+
+  color: var(--text-primary);
+
+  margin-bottom: 4px;
+
+  font-size: 17px;
+
+}
+
+
+.search-status {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 40px 20px;
+
+  border-radius: var(--radius-lg);
+
+  margin: 16px 0;
+
+}
+
+.search-status-loading {
+
+  color: var(--text-secondary);
+
+  gap: 10px;
+
+  flex-direction: row;
+
+}
+
+.search-status-empty {
+
+  background: var(--bg-white);
+
+  border: 1px dashed var(--border-color);
+
+  color: var(--text-secondary);
+}
+
+.search-status-icon {
+
+  font-size: 34px;
+
+  margin-bottom: 6px;
+
+}
+
+
+.alert-message {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 14px;
+
+  border-radius: var(--radius-md);
+
+  font-size: 13.5px;
+
+  font-weight: 500;
+
+  animation: emFadeInUp 0.25s ease-out both;
+
+}
+
+.alert-success {
+
+  background: var(--status-active-bg);
+
+  color: var(--status-active-text);
+
+  border: 1px solid rgba(22, 139, 58, 0.25);
+
+}
+
+.alert-error {
+
+  background: var(--status-inactive-bg);
+
+  color: var(--status-inactive-text);
+
+  border: 1px solid rgba(211, 47, 47, 0.25);
+
+}
+
+
+/* =========================================================
+   BOOTSTRAP CARD
+========================================================= */
+
+.card {
+
+  border-radius: var(--em-radius);
+
+}
+
+
+/* =========================================================
+   AUTHENTICATION UI
+========================================================= */
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes emFadeInUp {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(12px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+  }
+
+}
+
+
+.em-fade-in {
+
+  animation:
+    emFadeInUp
+    0.45s
+    ease-out
+    both;
+
+}
+
+
+@keyframes emScaleIn {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      scale(0.9);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      scale(1);
+
+  }
+
+}
+
+
+.em-scale-in {
+
+  animation:
+    emScaleIn
+    0.4s
+    ease-out
+    both;
+
+}
+
+
+/* =========================
+   PAYMENT PAGE
+========================= */
+
+.em-payment-card {
+
+  animation:
+    emFadeInUp
+    0.5s
+    ease-out
+    0.05s
+    both;
+
+  transition:
+    box-shadow var(--transition-base);
+
+}
+
+
+.em-payment-option {
+
+  cursor: pointer;
+
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+
+}
+
+
+.em-payment-option:hover {
+
+  border-color: var(--em-primary);
+
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    var(--em-shadow-sm);
+
+}
+
+
+.em-pay-btn {
+
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast);
+
+}
+
+
+.em-pay-btn:hover:not(:disabled) {
+
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 0.5rem 1.25rem rgba(79, 70, 229, 0.3);
+
+}
+
+
+.em-pay-btn:active:not(:disabled) {
+
+  transform:
+    translateY(0);
+
+}
+
+
+/* =========================
+   AUTH NAVBAR
+========================= */
+
+.em-navbar {
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--emart-green) 0%,
+      var(--emart-green-light) 100%
+    );
+
+  box-shadow:
+    var(--em-shadow-sm);
+
+}
+
+
+.em-navbar .navbar-brand {
+
+  font-weight: 700;
+
+  color: var(--em-primary);
+
+  letter-spacing: -0.02em;
+
+}
+
+
+.em-navbar .nav-link {
+
+  position: relative;
+
+  color: rgba(255, 255, 255, 0.92);
+
+  font-weight: 600;
+
+  transition:
+    color 0.2s ease;
+
+}
+
+
+.em-navbar .nav-link::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  bottom: -2px;
+
+  width: 0;
+
+  height: 2px;
+
+  background:
+    var(--emart-yellow);
+
+  transition:
+    width 0.2s ease;
+
+}
+
+
+.em-navbar .nav-link:hover {
+
+  color: #ffffff;
+
+}
+
+
+.em-navbar .nav-link:hover::after {
+
+  width: 100%;
+
+}
+
+
+.em-navbar .navbar-toggler {
+
+  border-color: rgba(255, 255, 255, 0.5);
+
+}
+
+
+.em-navbar .navbar-toggler-icon {
+
+  filter: invert(1) grayscale(1);
+
+}
+
+
+/* =========================
+   AUTH SEARCH
+========================= */
+
+.em-search-form {
+
+  max-width: 480px;
+
+}
+
+
+.em-search-form .form-control {
+
+  border-radius:
+    999px
+    0
+    0
+    999px;
+
+  border-right: none;
+
+}
+
+
+.em-search-form .form-control:focus {
+
+  box-shadow: none;
+
+  border-color:
+    var(--em-primary);
+
+}
+
+
+.em-search-form .btn {
+
+  border-radius:
+    0
+    999px
+    999px
+    0;
+
+}
+
+
+/* =========================
+   ICON BUTTON
+========================= */
+
+.em-icon-btn {
+
+  position: relative;
+
+  border: none;
+
+  background: transparent;
+
+  color: #212529;
+
+  font-size: 1.25rem;
+
+  transition:
+    transform 0.15s ease,
+    color 0.15s ease;
+
+}
+
+
+.em-icon-btn:hover {
+
+  color: var(--em-primary);
+
+  transform:
+    translateY(-1px);
+
+}
+
+
+.em-cart-badge {
+
+  position: absolute;
+
+  top: -4px;
+
+  right: -8px;
+
+  font-size: 0.6rem;
+
+}
+
+
+/* =========================
+   AUTH SHELL
+========================= */
+
+.em-auth-page {
+
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+.em-auth-topbar {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 1rem 1.75rem;
+
+  background: #fff;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+  flex-shrink: 0;
+
+}
+
+
+.em-auth-topbar-brand {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.5rem;
+
+  color: var(--em-primary);
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  font-size: 1.25rem;
+
+}
+
+
+.em-auth-topbar-brand i {
+
+  font-size: 1.4rem;
+
+}
+
+
+.em-auth-topbar-back {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+  color: var(--em-secondary);
+
+  text-decoration: none;
+
+  font-size: 0.9rem;
+
+  font-weight: 500;
+
+  transition: color 0.15s ease;
+
+}
+
+
+.em-auth-topbar-back:hover {
+
+  color: var(--em-primary);
+
+}
+
+
+.em-auth-shell {
+
+  flex: 1;
+
+  display: flex;
+
+  align-items: stretch;
+
+}
+
+
+.em-auth-illustration {
+
+  background:
+    var(--em-gradient);
+
+  color: #fff;
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 3.5rem;
+
+}
+
+
+.em-auth-illustration::before,
+.em-auth-illustration::after {
+
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+}
+
+
+.em-auth-illustration::before {
+
+  width: 320px;
+
+  height: 320px;
+
+  top: -80px;
+
+  right: -80px;
+
+}
+
+
+.em-auth-illustration::after {
+
+  width: 220px;
+
+  height: 220px;
+
+  bottom: -60px;
+
+  left: -60px;
+
+}
+
+
+.em-auth-illustration-content {
+
+  position: relative;
+
+  z-index: 1;
+
+}
+
+
+.em-auth-feature {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.75rem;
+
+  margin-top: 1.25rem;
+
+  font-size: 0.95rem;
+
+}
+
+
+.em-auth-feature i {
+
+  font-size: 1.25rem;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.15
+    );
+
+  width: 2.25rem;
+
+  height: 2.25rem;
+
+  border-radius: 50%;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+}
+
+
+/* =========================
+   AUTH FORM
+========================= */
+
+.em-auth-form-area {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding:
+    2.5rem
+    1.25rem;
+
+  flex: 1;
+
+}
+
+
+.em-glass-card {
+
+  width: 100%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.85
+    );
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.6
+    );
+
+  border-radius:
+    var(--em-radius-lg);
+
+  box-shadow:
+    var(--em-shadow);
+
+}
+
+
+/* =========================
+   FORM INPUTS
+========================= */
+
+.em-input-group {
+
+  border-radius:
+    var(--em-radius-sm);
+
+  overflow: hidden;
+
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+
+}
+
+
+.em-input-group
+.input-group-text {
+
+  color:
+    var(--em-secondary);
+
+}
+
+
+.em-input-group:focus-within {
+
+  box-shadow:
+    0 0 0 0.2rem
+    rgba(
+      13,
+      110,
+      253,
+      0.15
+    );
+
+  border-radius:
+    var(--em-radius-sm);
+
+}
+
+
+.em-input-group
+.form-control,
+
+.em-input-group
+.btn {
+
+  border-color:
+    #dee2e6;
+
+}
+
+
+.em-input-group
+.form-control:focus {
+
+  box-shadow: none;
+
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.em-divider {
+
+  display: flex;
+
+  align-items: center;
+
+  text-align: center;
+
+  color:
+    var(--em-secondary);
+
+  font-size: 0.85rem;
+
+  margin:
+    1.25rem 0;
+
+}
+
+
+.em-divider::before,
+.em-divider::after {
+
+  content: "";
+
+  flex: 1;
+
+  border-bottom:
+    1px solid
+    #dee2e6;
+
+}
+
+
+.em-divider:not(:empty)::before {
+
+  margin-right:
+    0.75rem;
+
+}
+
+
+.em-divider:not(:empty)::after {
+
+  margin-left:
+    0.75rem;
+
+}
+
+
+/* =========================
+   GOOGLE BUTTON
+========================= */
+
+.em-btn-google {
+
+  border:
+    1px solid
+    #dee2e6;
+
+  background: #fff;
+
+  font-weight: 500;
+
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+}
+
+
+.em-btn-google:hover {
+
+  background-color:
+    #f8f9fa;
+
+  box-shadow:
+    var(--em-shadow-sm);
+
+}
+
+
+/* =========================
+   BUTTON ANIMATION
+========================= */
+
+.em-btn-lift {
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+}
+
+
+.em-btn-lift:hover:not(:disabled) {
+
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    var(--em-shadow-sm);
+
+}
+
+
+/* =========================
+   SUCCESS CIRCLE
+========================= */
+
+.em-success-circle {
+
+  width: 4.5rem;
+
+  height: 4.5rem;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      25,
+      135,
+      84,
+      0.1
+    );
+
+  color:
+    var(--em-success);
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 2.25rem;
+
+}
+
+
+/* =========================================================
+   HOME ICON
+========================================================= */
+
+.home-icon-circle {
+
+  width: 3rem;
+
+  height: 3rem;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 991.98px) {
+
+  .em-auth-illustration {
+
+    display: none;
+
+  }
+
+
+  .em-auth-topbar {
+
+    padding: 0.85rem 1.25rem;
+
+  }
+
+}
+
+
+@media (max-width: 991.98px) {
+
+  .top-header {
+
+    flex-wrap: wrap;
+
+    padding:
+      12px 15px;
+
+  }
+
+
+  .logo {
+
+    min-width: auto;
+
+  }
+
+
+  .search-box {
+
+    order: 3;
+
+    flex-basis: 100%;
+
+    max-width: 100%;
+
+  }
+
+
+  .header-actions {
+
+    margin-left: auto;
+
+  }
+
+
+  .sidebar {
+
+    width: 220px;
+
+  }
+
+
+  .content {
+
+    padding:
+      20px;
+
+  }
+
+}
+
+
+@media (max-width: 420px) {
+
+  .em-auth-topbar-back span {
+
+    display: none;
+
+  }
+
+}
+
+
+@media (max-width: 767px) {
+
+  .navigation {
+
+    padding:
+      0 10px;
+
+  }
+
+
+  .main-container {
+
+    display: block;
+
+  }
+
+
+  .sidebar {
+
+    width: 100%;
+
+    border-right: none;
+
+    border-bottom:
+      1px solid
+      var(--border-light);
+
+  }
+
+
+  .header-actions {
+
+    gap: 10px;
+
+  }
+
+
+  .user strong {
+
+    display: none;
+
+  }
+
+
+  .cart-amount {
+
+    display: none;
+
+  }
+
+
+  .footer-inner {
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    text-align: center;
+
+  }
+
+}
